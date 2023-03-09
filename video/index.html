@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro Feedback | Video</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Styles -->
+    <style>
+      body {
+        /* border: solid 1px blue; */
+        height: 100vh;
+        background-color: #bdf0f7;
+      }
+    </style>
+
+    <div class="h-100 d-flex flex-column align-items-center justify-content-center">
+      <div id="vidbtns">
+        <button class="btn btn-warning btn-lg px-5" id="play" onclick="startPy()">
+          Play
+        </button>
+        <button class="btn btn-warning btn-lg px-5" id="stop" onclick="stopPy()">
+          Stop
+        </button>
+        
+        <button class="btn btn-warning btn-lg px-5" id="next" >Return</button><br /><br />
+
+      </div>
+
+      <video id="myVideo" height="700" controls>
+        <source src="video1.mp4" type="video/mp4" play />
+        Your browser does not support HTML5 video.
+      </video>
+      <div class="hide"></div>
+    </div>
+	
+	
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+	<!-- TODO: Add SDKs for Firebase products that you want to use<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	
+	<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="script.js"></script>
+	<script>
+    function startPy() {
+      $.ajax({
+        type: "POST",
+        url: '../session/run_session.php',
+      });
+      console.log("Run");
+    }
+    function stopPy() {
+      $.ajax({
+        type: "POST",
+        url: '../session/stop_session.php',
+      });
+      console.log("stop");
+    }
+    </script>
+
+  </body>
+</html>
